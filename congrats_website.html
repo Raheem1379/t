@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Congratulations!</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: linear-gradient(135deg, #ff9ec4, #ffe8a3);
+      text-align: center;
+      padding: 20px;
+      overflow: hidden;
+    }
+    .card {
+      background: white;
+      padding: 50px;
+      border-radius: 25px;
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+      max-width: 600px;
+      animation: fadeIn 1.5s ease;
+    }
+    h1 {
+      font-size: 2.8rem;
+      margin-bottom: 20px;
+      color: #d63384;
+      animation: pop 1.2s ease;
+    }
+    p {
+      font-size: 1.3rem;
+      line-height: 1.6;
+      color: #444;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes pop {
+      0% { transform: scale(0.5); opacity: 0; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+    /* Floating hearts */
+    .heart {
+      position: fixed;
+      bottom: -20px;
+      font-size: 24px;
+      animation: floatUp 6s linear infinite;
+      opacity: 0.7;
+    }
+    @keyframes floatUp {
+      0% { transform: translateY(0) translateX(0); opacity: 0; }
+      20% { opacity: 1; }
+      100% { transform: translateY(-120vh) translateX(30px); opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>Congratulations my love on Your New Job! 🎉</h1>
+    <p>
+      I am *so* proud of you. You worked soooooo hard for this, and seeing you finally get the job you've been dreaming about means everything and more to me pretty girl.
+    </p>
+    <p>
+      You inspire me every day — your determination, your passion, your kindness and genereal amazingness. I always knew you were destined for amazing things, and this is just the start. ❤️
+    </p>
+    <p>
+      I'm with you every step of the way my pretty <3.
+    </p>
+  </div>
+
+  <!-- Floating hearts animation -->
+  <script>
+    function createHeart() {
+      const heart = document.createElement('div');
+      heart.classList.add('heart');
+      heart.innerHTML = '❤️';
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.animationDuration = 4 + Math.random() * 4 + 's';
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 8000);
+    }
+    setInterval(createHeart, 500);
+  // Confetti effect
+    function launchConfetti() {
+      const colors = ['#ff6bcb', '#ffd93d', '#6be0ff', '#b28dff'];
+      for (let i = 0; i < 150; i++) {
+        const confetto = document.createElement('div');
+        confetto.style.position = 'fixed';
+        confetto.style.width = '10px';
+        confetto.style.height = '10px';
+        confetto.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+        confetto.style.top = '-20px';
+        confetto.style.left = Math.random() * 100 + 'vw';
+        confetto.style.opacity = 0.9;
+        confetto.style.transform = `rotate(${Math.random() * 360}deg)`;
+        confetto.style.borderRadius = '2px';
+        confetto.style.animation = `fall ${3 + Math.random() * 3}s linear`; 
+        document.body.appendChild(confetto);
+        setTimeout(() => confetto.remove(), 6000);
+      }
+    }
+
+    setTimeout(launchConfetti, 800);
+
+    const style = document.createElement('style');
+    style.innerHTML = `@keyframes fall {
+      0% { transform: translateY(0) rotate(0deg); }
+      100% { transform: translateY(120vh) rotate(720deg); }
+    }`;
+    document.head.appendChild(style);
+
+  </script>
+
+  <!-- Soft background music -->
+  <audio autoplay loop>
+    <source src="music.mp3" type="audio/mpeg">
+  </audio>
+</body>
+</html>
